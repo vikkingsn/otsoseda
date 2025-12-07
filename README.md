@@ -28,19 +28,11 @@ cp .env.example .env
 
 Заполните необходимые переменные:
 
-```env
-PORT=3000
-JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
-YOOKASSA_SHOP_ID=your_shop_id
-YOOKASSA_SECRET_KEY=your_secret_key
-```
+
 
 ### 3. Получение ключей ЮKassa
 
-1. Зарегистрируйтесь на [ЮKassa](https://yookassa.ru/)
-2. Создайте магазин в личном кабинете
-3. Получите Shop ID и Secret Key
-4. Добавьте их в файл `.env`
+
 
 ### 4. Запуск сервера
 
