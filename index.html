@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Площадка Услуг - Найди исполнителя</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>УслугиРядом</h1>
+                <p class="logo-subtitle">Площадка для поиска и предоставления услуг</p>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <a href="#services" class="nav-link">Услуги</a>
+                <a href="#how-it-works" class="nav-link">Как это работает</a>
+                <a href="#contact" class="nav-link">Контакты</a>
+                <div id="authButtons" class="auth-buttons">
+                    <a href="login.html" class="btn btn-small btn-secondary">Вход</a>
+                    <a href="register.html" class="btn btn-small btn-primary">Регистрация</a>
+                </div>
+                <div id="userInfo" class="user-info" style="display: none;">
+                    <span class="user-name"></span>
+                    <button onclick="logout()" class="btn btn-small btn-secondary">Выйти</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Найди исполнителя или предложи свою услугу</h2>
+            <p>Площадка для встречи тех, кому нужны услуги, и тех, кто их предоставляет</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Найти услугу</button>
+                <button class="btn btn-secondary">Предложить услугу</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Популярные услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=400&h=300&fit=crop" alt="Выгул питомцев">
+                    </div>
+                    <div class="service-content">
+                        <h3>Выгул питомцев</h3>
+                        <p>Нужен выгул вашего питомца? Или вы готовы помочь другим владельцам?</p>
+                        <div class="service-tags">
+                            <span class="tag">Питомцы</span>
+                            <span class="tag">Прогулки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1621964018456-9cd34372ae32?w=400&h=300&fit=crop" alt="Вынос мусора">
+                    </div>
+                    <div class="service-content">
+                        <h3>Вынос мусора</h3>
+                        <p>Помощь с выносом мусора и утилизацией отходов</p>
+                        <div class="service-tags">
+                            <span class="tag">Бытовые</span>
+                            <span class="tag">Уборка</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=400&h=300&fit=crop" alt="Чистка сифона">
+                    </div>
+                    <div class="service-content">
+                        <h3>Чистка сифона</h3>
+                        <p>Профессиональная чистка сифонов и сантехники</p>
+                        <div class="service-tags">
+                            <span class="tag">Сантехника</span>
+                            <span class="tag">Ремонт</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?w=400&h=300&fit=crop" alt="Уборка">
+                    </div>
+                    <div class="service-content">
+                        <h3>Уборка квартиры</h3>
+                        <p>Помощь с уборкой и наведением порядка</p>
+                        <div class="service-tags">
+                            <span class="tag">Бытовые</span>
+                            <span class="tag">Уборка</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop" alt="Доставка">
+                    </div>
+                    <div class="service-content">
+                        <h3>Доставка продуктов</h3>
+                        <p>Доставка продуктов и товаров из магазинов</p>
+                        <div class="service-tags">
+                            <span class="tag">Доставка</span>
+                            <span class="tag">Покупки</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&h=300&fit=crop" alt="Ремонт">
+                    </div>
+                    <div class="service-content">
+                        <h3>Мелкий ремонт</h3>
+                        <p>Помощь с мелким ремонтом и установкой</p>
+                        <div class="service-tags">
+                            <span class="tag">Ремонт</span>
+                            <span class="tag">Установка</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Выберите услугу</h3>
+                    <p>Найдите нужную услугу или разместите свое предложение</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Свяжитесь</h3>
+                    <p>Свяжитесь с исполнителем или заказчиком</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Получите результат</h3>
+                    <p>Выполните задачу и получите оплату</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Свяжитесь с нами</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Ваш email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Ваше сообщение" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 УслугиРядом. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="smooth-scroll.js"></script>
+</body>
+</html>
+
