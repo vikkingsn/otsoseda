@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оплата успешна - УслугиРядом</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105722602', 'ym');
+
+        ym(105722602, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105722602" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>УслугиРядом</h1>
+                <p class="logo-subtitle">Площадка для поиска и предоставления услуг</p>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="mainNav">
+                <a href="index.html" class="nav-link">Главная</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="payment-success-section">
+        <div class="container">
+            <div class="payment-success-card">
+                <div class="success-icon">✓</div>
+                <h2>Оплата успешно обработана!</h2>
+                <p id="paymentStatusMessage">Ваш платеж был успешно обработан.</p>
+                <div id="paymentDetails" class="payment-details"></div>
+                <a href="index.html" class="btn btn-primary">Вернуться на главную</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 УслугиРядом. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script>
+        // Получение ID платежа из URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const paymentId = urlParams.get('payment_id');
+        const isTest = urlParams.get('test') === 'true';
+
+        if (paymentId) {
+            // Если это тестовый режим
+            if (isTest) {
+                document.getElementById('paymentStatusMessage').textContent = 
+                    'Тестовый платеж создан успешно! В реальном режиме здесь будет ссылка на оплату ЮKassa.';
+                document.getElementById('paymentDetails').innerHTML = `
+                    <p><strong>ID платежа:</strong> ${paymentId}</p>
+                    <p><em>Для работы с реальными платежами настройте ключи ЮKassa в .env файле</em></p>
+                `;
+            } else {
+                // Проверка статуса платежа
+                const token = localStorage.getItem('token');
+                if (token) {
+                    const API_URL = window.location.origin.includes('localhost') 
+                        ? 'http://localhost:3000/api' 
+                        : '/api';
+                    
+                    fetch(`${API_URL}/payment-status/${paymentId}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('paymentDetails').innerHTML = `
+                            <p><strong>ID платежа:</strong> ${data.payment_id}</p>
+                            <p><strong>Сумма:</strong> ${data.amount} руб.</p>
+                            <p><strong>Статус:</strong> ${data.status}</p>
+                        `;
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при получении статуса платежа:', error);
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>
+

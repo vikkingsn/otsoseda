@@ -199,8 +199,31 @@
         </div>
     </footer>
 
+    <!-- Модальное окно для оплаты -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-modal-content">
+            <span class="payment-modal-close" onclick="closePaymentModal()">&times;</span>
+            <h2>Оплата запроса</h2>
+            <p class="payment-service-name">Услуга: <span id="paymentServiceName"></span></p>
+            <form id="paymentForm">
+                <input type="hidden" id="paymentServiceType" name="service_type">
+                <div class="form-group">
+                    <label for="paymentAmount">Сумма (руб.)</label>
+                    <input type="number" id="paymentAmount" name="amount" min="1" step="0.01" placeholder="Введите сумму" required>
+                </div>
+                <div class="form-group">
+                    <label for="paymentDescription">Описание (необязательно)</label>
+                    <textarea id="paymentDescription" name="description" rows="3" placeholder="Дополнительная информация"></textarea>
+                </div>
+                <div id="paymentError" class="error-message"></div>
+                <button type="submit" id="paymentSubmitBtn" class="btn btn-primary btn-full">Оплатить</button>
+            </form>
+        </div>
+    </div>
+
     <script src="auth.js"></script>
     <script src="smooth-scroll.js"></script>
+    <script src="payment.js"></script>
 </body>
 </html>
 
